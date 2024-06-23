@@ -16,18 +16,25 @@ namespace Adder
             do
             {
                 Console.WriteLine("Kérem az első számot:");
-                number1 = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out number1))
+                {
+                    Console.WriteLine("Érvénytelen szám, kérem próbálja újra!");
+                }
+                if (number1 == 0) break;
 
                 Console.WriteLine("Kérem a második számot:");
-                number2 = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out number2))
+                {
+                    Console.WriteLine("Érvénytelen szám, kérem próbálja újra!");
+                }
+                if (number2 == 0) break;
 
                 int sum = number1 + number2;
                 Console.WriteLine($"A megadott számok összege: {sum}");
             }
-            while (number1 != 0 || number2 != 0);
-            {
-                Console.WriteLine("A játék véget ért!");
-            }
+            while (true);
+
+            Console.WriteLine("A játék véget ért!");
         }
     }
 }
